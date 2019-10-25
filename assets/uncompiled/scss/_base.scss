@@ -1,0 +1,59 @@
+*,
+html,
+body {
+	text-rendering: optimizeLegibility;
+}
+
+html {
+    line-height: 1.5;
+    font-size: 10px
+}
+
+html,
+body {
+    font-family: $primary-font;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	small {
+		color: inherit;
+		font-size: 60%;
+		line-height: inherit;
+	}
+}
+
+a {
+	color: inherit;
+    text-decoration: none;
+    outline: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+        color: inherit;
+        cursor: pointer;
+	}
+}
+
+// ** highlighter
+::-moz-selection { 
+    color: white;
+    background: $secondary-color;
+}
+::selection {
+    color: white;
+    background: $secondary-color;
+}

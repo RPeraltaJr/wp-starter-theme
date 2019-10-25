@@ -1,0 +1,12 @@
+.env
+.DS_Store
+.sass-cache
+.tmp
+.vscode/ftp-kr.sync.cache.json
+composer.lock
+node_modules
+package-lock.json
+vendor
+*.mp3
+*.mp4
+*.psd

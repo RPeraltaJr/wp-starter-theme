@@ -1,0 +1,1 @@
+<h1 class="font-display-1">Hero section</h1>

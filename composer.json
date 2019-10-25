@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ezyang/htmlpurifier": "^4.10",
+        "vlucas/phpdotenv": "^3.3"
+    }
+}

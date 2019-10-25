@@ -1,0 +1,18 @@
+// * core components
+@import 'colors';
+@import 'mixins';
+@import 'layout';
+@import 'fonts';
+@import 'buttons';
+@import 'animation';
+// @import 'lightbox';
+@import 'base';
+
+// * include global components
+@import '../../../components/global/**/*.scss';
+
+// * include shared / snippet components
+// @import '../../../components/shared/example/*.scss';
+
+// * page specific components
+@import '../../../components/home/**/*.scss';

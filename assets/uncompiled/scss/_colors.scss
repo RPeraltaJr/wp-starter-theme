@@ -1,0 +1,15 @@
+// * colors
+$color-blue: #279AF1;
+$color-pink: #FFD4CA;
+$color-yellow: #FBFFB9;
+$color-green: #8FD5A6;
+
+$color-map: (
+    blue: $color-blue,
+    pink: $color-pink,
+    yellow: $color-yellow,
+    green: $color-green,
+);
+
+$primary-color: $color-blue;
+$secondary-color: $color-pink;

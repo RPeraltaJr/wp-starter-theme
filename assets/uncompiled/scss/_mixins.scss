@@ -1,0 +1,93 @@
+// * media query variables and mixin
+$grid-small: 767px;
+$grid-medium: 992px;
+$grid-large: 1024px; 
+$grid-widescreen: 1200px;
+
+// * breakpoint labels used with the media-query mixin
+$small: 'small';
+$small-up: 'small-up';
+$medium: 'medium';
+$medium-down: 'medium-down';
+$large: 'large';
+$large-down: 'large-down';
+$x-large: 'x-large';
+
+// * breakpoints map
+$breakpoints: (
+	$small '(max-width: #{$grid-small})',
+	$small-up '(min-width: #{$grid-small + 1})',
+	$medium-down '(max-width: #{$grid-medium - 1})',
+	$medium '(min-width: #{$grid-medium})',
+	$large-down '(max-width: #{$grid-widescreen - 1})',
+	$large '(min-width: #{$grid-large})',
+	$x-large '(min-width: #{$grid-widescreen})'
+);
+
+// * Helper to declare media query rules
+// * @param {string} $media-query
+@mixin respond-to($media-query) {
+	$breakpoint-found: false;
+
+	@each $breakpoint in $breakpoints {
+		$name: nth($breakpoint, 1);
+		$declaration: nth($breakpoint, 2);
+
+		@if $media-query==$name and $declaration {
+			$breakpoint-found: true;
+
+			@media only screen and #{$declaration} {
+				@content;
+			}
+		}
+	}
+}
+
+// * basic transition rule
+@mixin transition-basic() {
+	transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+// * form placeholder color
+// * @param {string} $color
+@mixin placeholderColor($color) { // use within form class
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: $color;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+		color: $color;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+		color: $color;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+		color: $color;
+	}
+}
+
+// * Helper for cover background-image
+// * @param {string} $url Relative path from img folder
+// * @param {int} $opacity Optional. Specify amount from 0 to 1 for black overlay.
+// * @params {string/int} $xpos $ypos Optional. Specify image positioning
+@mixin bg-cover($url: "", $opacity: 0, $xpos: 50%, $ypos: 50%) {
+	background-image: url("../img/#{$url}");
+	background-size: cover;
+	background-position: $xpos $ypos;
+	background-repeat: no-repeat;
+
+	@if $opacity > 0 {
+		position: relative;
+		z-index: 1;
+
+		&::before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(black, $opacity);
+			z-index: -1;
+		}
+	}
+}

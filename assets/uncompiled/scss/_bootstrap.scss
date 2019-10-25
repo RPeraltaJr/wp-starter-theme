@@ -1,0 +1,211 @@
+/* Bootstrap Classes */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.img-responsive {
+  width: 100%;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+}
+
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+    display: none !important;
+}
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .visible-xs {
+      display: block !important;
+  }
+  table.visible-xs {
+      display: table !important;
+  }
+  tr.visible-xs {
+      display: table-row !important;
+  }
+  th.visible-xs,
+  td.visible-xs {
+      display: table-cell !important;
+  }
+}
+@media (max-width: 767px) {
+  .visible-xs-block {
+      display: block !important;
+  }
+}
+@media (max-width: 767px) {
+  .visible-xs-inline {
+      display: inline !important;
+  }
+}
+@media (max-width: 767px) {
+  .visible-xs-inline-block {
+      display: inline-block !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm {
+      display: block !important;
+  }
+  table.visible-sm {
+      display: table !important;
+  }
+  tr.visible-sm {
+      display: table-row !important;
+  }
+  th.visible-sm,
+  td.visible-sm {
+      display: table-cell !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm-block {
+      display: block !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm-inline {
+      display: inline !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm-inline-block {
+      display: inline-block !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .visible-md {
+      display: block !important;
+  }
+  table.visible-md {
+      display: table !important;
+  }
+  tr.visible-md {
+      display: table-row !important;
+  }
+  th.visible-md,
+  td.visible-md {
+      display: table-cell !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .visible-md-block {
+      display: block !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .visible-md-inline {
+      display: inline !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .visible-md-inline-block {
+      display: inline-block !important;
+  }
+}
+@media (min-width: 1200px) {
+  .visible-lg {
+      display: block !important;
+  }
+  table.visible-lg {
+      display: table !important;
+  }
+  tr.visible-lg {
+      display: table-row !important;
+  }
+  th.visible-lg,
+  td.visible-lg {
+      display: table-cell !important;
+  }
+}
+@media (min-width: 1200px) {
+  .visible-lg-block {
+      display: block !important;
+  }
+}
+@media (min-width: 1200px) {
+  .visible-lg-inline {
+      display: inline !important;
+  }
+}
+@media (min-width: 1200px) {
+  .visible-lg-inline-block {
+      display: inline-block !important;
+  }
+}
+@media (max-width: 767px) {
+  .hidden-xs {
+      display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+      display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+      display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+      display: none !important;
+  }
+}
