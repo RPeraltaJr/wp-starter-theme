@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <meta name="theme-color" content="#FFFFFF"/>
 
-    <title>Company | Careers<?php if(isset($page->meta) && !empty($page->meta['title'])): echo " - {$page->meta['title']}"; endif; ?></title>
+    <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
     <!-- <link rel="shortcut icon" href="assets/build/img/favicon.ico" type="image/x-icon"> -->
 
     <!-- Stylesheet -->
