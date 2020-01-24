@@ -23,3 +23,5 @@
         $version = "1.0.0";
 
     endif;
+
+    $img_path = get_template_directory_uri() . "/assets/build/img";
