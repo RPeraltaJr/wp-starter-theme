@@ -191,12 +191,10 @@ if( isset($_POST['submit']) ):
         $table_data["post_status"] = "skip";
     }
 	
-
-	// insert data into table
-	$success = $wpdb->insert($table_name, $table_data);
-
 	// send mail if successful
 	if ($response->error === false):
+
+		// insert data into table
 		$success = $wpdb->insert($table_name, $table_data);
 
 		if ($success) {
