@@ -25,9 +25,9 @@ $purifier = new HTMLPurifier($config);
 * ----------------------------------------------
 */
 
-$error = (object) [
-	"status"    => false,
-	"message"   => array()
+$response = (object) [
+	"error"    	=> false,
+	"messages"  => array()
 ];
 
 /* 
