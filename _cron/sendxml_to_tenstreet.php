@@ -173,7 +173,7 @@ while ($row = $query->fetch(PDO::FETCH_OBJ)) {
 
 	// Tenstreet non-required questions
 	if (!empty($row->custom_questions)) {
-		$custom_questions = json_decode($row->$custom_questions);
+		$custom_questions = json_decode($row->custom_questions);
 		foreach($custom_questions as $id => $question) {
 			// TenstreetData > ApplicationData > DisplayFields > DisplayField node
 			$DisplayField = $xml->createElement('DisplayField');
