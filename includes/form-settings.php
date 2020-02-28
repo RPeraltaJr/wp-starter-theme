@@ -100,13 +100,14 @@ $states_array = array (
 // form submission
 if( isset($_POST['submit']) ):
 
-	// required form fields
+	// form fields
+	// field name => required
 	$post_fields_array = array(
-		"first_name",
-		"last_name",
-		"email",
-		"zipcode",
-		"phone",
+		"first_name"	=> true,
+		"last_name"		=> true,
+		"email"			=> true,
+		"zipcode"		=> true,
+		"phone"			=> true,
 	);
 
 	$custom_questions_fields = [
@@ -126,10 +127,10 @@ if( isset($_POST['submit']) ):
 	);
 
 	// validations
-	foreach ($post_fields_array as $post_field) {
-        if (empty($_POST[$post_field]) || strlen($_POST[$post_field]) < 1) {
+	foreach ($post_fields_array as $post_field => $required) {
+        if ( (empty($_POST[$post_field]) || strlen($_POST[$post_field]) < 1) && $required == true ) {
             $response->error = true;
-            $response->messages[] = "Fill input for all required fields.";
+            $response->messages[$post_field] = "<strong>{$post_field}</strong> is required.";
             
             if (!empty($_GET['testing']) && is_user_logged_in()) {
                 $response->messages[] = "field: $post_field";
@@ -147,7 +148,7 @@ if( isset($_POST['submit']) ):
                 if (!empty($$post_field)) {
                     if (!filter_var($$post_field, FILTER_VALIDATE_EMAIL)) {
                         $response->error = true;
-                        $response->messages[] = "Enter a valid email address.";
+                        $response->messages["email"] = "Enter a valid email address.";
                     }
                 }
                 $table_data[$post_field] = $$post_field;
@@ -162,7 +163,7 @@ if( isset($_POST['submit']) ):
     foreach ($custom_questions_fields as $post_field => $label) {
         if (empty($_POST[$post_field]) || strlen($_POST[$post_field]) < 1) {
             $response->error = true;
-            $response->messages[] = "<strong>$label</strong> is required.";
+            $response->messages[$label] = "<strong>$label</strong> is required.";
             
             if (!empty($_GET['testing']) && is_user_logged_in()) {
                 $response->messages[] = "field: $post_field";
@@ -175,21 +176,23 @@ if( isset($_POST['submit']) ):
             "a" => $$post_field,
         ];
     }
-
     $table_data["custom_questions"] = json_encode($custom_questions);
 
-
 	// * check for accepted terms agreement
-    if ($_POST['terms'] !== "Yes") {
+    if ($_POST['terms'] !== "Yes"):
         $response->error = true;
         $response->messages[] = "Please agree to our terms";
-    }
-	if ($last_name === "Testerson") {
+	endif;
+
+	// * skip
+	if ($last_name === "Testerson"):
         $table_data["post_status"] = "skip";
-    }
-    if ( strtolower($custom_questions['cdl']['a']) == "no") {
+	endif;
+	
+	// * skip
+    if ( strtolower($custom_questions['cdl']['a']) == "no"):
         $table_data["post_status"] = "skip";
-    }
+	endif;
 	
 	// send mail if successful
 	if ($response->error === false):
@@ -213,7 +216,7 @@ if( isset($_POST['submit']) ):
             $message = "<html><head></head><body>$mail_applicant</body></html>";
             $headers = array(
                 "Content-Type: text/html; charset=UTF-8",
-                "From: $company_name <no-reply@{$_SERVER['HTTP_HOST']}>",
+                "From: $company_name <no-reply@" . home_url() . ">",
             );
 
             wp_mail($to, $subject, $message, $headers);
@@ -221,7 +224,7 @@ if( isset($_POST['submit']) ):
             exit();
         } else {
             $response->error = true;
-            $response->messages[] = "There was an error. Please try again.";
+            $response->messages["form"] = "There was an error. Please try again.";
 		}
 	endif;
 
