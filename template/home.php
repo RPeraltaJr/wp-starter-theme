@@ -3,15 +3,15 @@
 Template Name: Home
 */
 
-$page = (object) array(
+$page = (object) [
     "type"      => "page-home",
     "name"      => str_replace('.php', '', basename($_SERVER['PHP_SELF'])),
-    "meta"      => [
+    "meta"      => (object) [
         "title" => "Home",
         "desc"  => "",
     ],
     "plugins"   => [],
-);
+];
 
 include __DIR__ . "/../includes/site-settings.php";
 include __DIR__ . "/../includes/form-settings.php";
