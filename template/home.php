@@ -3,7 +3,7 @@
 Template Name: Home
 */
 
-$page = (object) [
+$page_setting = (object) [
     "type"      => "page-home",
     "name"      => str_replace('.php', '', basename($_SERVER['PHP_SELF'])),
     "meta"      => (object) [
