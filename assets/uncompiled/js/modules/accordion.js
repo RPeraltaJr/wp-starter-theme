@@ -22,15 +22,15 @@ $('[data-toggle]').on('click keypress', function(){
     }
 
     // get target element
-    let target = $(this).data('toggle');
+    var target = $(this).data('toggle');
 
     // get target element's group if it exists
-    let group = $(`[data-target='${target}']`).data('group');
+    var group = $('[data-target='+ target +']').data('group');
 
     // hide all group items EXCEPT the current data target element
-    $('[data-group]').not($(`[data-target='${target}']`)).slideUp();
+    $('[data-group]').not($('[data-target='+ target +']')).slideUp();
 
     // toggle current data target element
-    $(`[data-target='${target}']`).slideToggle();
+    $('[data-target='+ target +']').slideToggle();
     
 });
