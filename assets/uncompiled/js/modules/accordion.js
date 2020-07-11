@@ -4,6 +4,7 @@
 *
 * Use [data-toggle="#element"] on a button
 * Use [data-target="#element"] on dropdown element
+* Use [data-group="#group-name"] on element with [data-target] to assign a group name. Assigning group names will allow one accordion element to be open at a time.
 * --------------------------------------------------
 */
 
