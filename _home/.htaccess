@@ -119,6 +119,16 @@ AddEncoding gzip svgz
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
+# Block Comment Spam
+# <IfModule mod_rewrite.c>
+#    RewriteEngine On
+#    RewriteCond %{REQUEST_METHOD} POST
+#    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+#    RewriteCond %{HTTP_REFERER} !example.com [NC]
+#    RewriteCond %{REQUEST_URI} /wp-comments-post\.php [NC]
+#    RewriteRule .* - [F,L]
+# </IfModule>
+
 # Disable directory listing
 Options -Indexes
 
