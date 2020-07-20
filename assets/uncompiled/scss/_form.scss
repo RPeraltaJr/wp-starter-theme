@@ -3,15 +3,23 @@
     &__group {
         display: flex;
         justify-content: space-between;
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+        }
         &:not(:last-child) {
             margin-bottom: 1.5rem;
         }
     }
     &__input {
         &--full { width: 100%; }
-        &--half { width: 48%; }
-        &:not(:last-child) {
-            margin-bottom: 1.5rem;
+        &--half { 
+            width: 48%; 
+            @media (max-width: 767px) {
+                width: 100%;
+                &:not(:last-child) {
+                    margin-bottom: 1.5rem;
+                }
+            }
         }
     }
     
