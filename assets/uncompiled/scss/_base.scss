@@ -27,6 +27,15 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li {
     color: inherit;
 }
 
+body {
+    &.logged-in {
+        padding-top: 32px;
+        @media (max-width: 767px) {
+            padding-top: 46px;
+        }
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
 	small {
 		color: inherit;
