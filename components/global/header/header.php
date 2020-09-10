@@ -13,11 +13,11 @@
 
     <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
     <!-- <link rel="shortcut icon" href="assets/build/img/favicon.ico" type="image/x-icon"> -->
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/build/css/<?php echo $page_setting->type; ?>.min.css?ver=<?php echo $version; ?>">
     
     <?php wp_head(); ?>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/build/css/<?php echo $page_setting->type; ?>.min.css?ver=<?php echo $version; ?>">
 
   </head>
   <body <?php body_class(); ?>>
