@@ -10,6 +10,7 @@ $page_setting = (object) [
         "title" => "Home",
         "desc"  => "",
     ],
+    "master_copy" => 149,
     "plugins"   => [],
 ];
 
