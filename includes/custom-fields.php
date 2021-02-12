@@ -22,6 +22,10 @@ if (in_array("lp-thank", $page_type)) {
     }
 }
 
+if (!empty($master_copy)) {
+    $page_settings->master_copy = $master_copy;
+}
+
 $page_type[] = "post-" . $post->ID;
 $test_mode = false;
 
