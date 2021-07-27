@@ -10,3 +10,4 @@ vendor
 *.mp3
 *.mp4
 *.psd
+assets/uncompiled/css
