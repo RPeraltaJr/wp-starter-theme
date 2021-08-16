@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css');
+
 /* Bootstrap Classes */
 
 .sr-only {
@@ -12,27 +14,33 @@
 }
 
 .form-control {
+  font-family: $primary-font;
   display: block;
   width: 100%;
-  height: 34px;
+  height: 36px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
+  color: $color-blue-400;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  border: 1px solid white;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  &:focus {
+    border: solid 1px $color-blue-100;
+  }
 }
 
-.img-responsive {
-  width: 100%;
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
+
+// .img-responsive {
+//   width: 100%;
+// }
 
 .list-inline {
   padding-left: 0;
@@ -42,12 +50,12 @@
   display: inline-block;
 }
 
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
+// .collapse {
+//   display: none;
+// }
+// .collapse.in {
+//   display: block;
+// }
 
 .visible-xs,
 .visible-sm,
