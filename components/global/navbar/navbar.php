@@ -1,4 +1,4 @@
-<section class="navbar" aria-role="navigation" aria-label="site navigation">
+<section class="Navbar" aria-role="navigation" aria-label="site navigation">
   
   <button id="navbarButton" class="hamburger hamburger--elastic" type="button" aria-label="Menu" aria-controls="navigation">
       <span class="hamburger-box">
