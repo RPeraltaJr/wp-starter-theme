@@ -10,6 +10,9 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="theme-color" content="#FFFFFF"/>
+    
+    <meta property="og:type" content="website"/> 
+    <meta property="og:title" content="<?php if(isset($page_setting->meta) && !empty($page_setting->meta->title)): echo $page_setting->meta->title; else: echo ""; endif; ?>"/>
 
     <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
     <!-- <link rel="shortcut icon" href="assets/build/img/favicon.ico" type="image/x-icon"> -->
