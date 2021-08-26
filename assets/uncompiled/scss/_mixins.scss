@@ -1,51 +1,15 @@
-// * media query variables and mixin
-$grid-small: 767px;
-$grid-medium: 992px;
-$grid-large: 1024px; 
-$grid-widescreen: 1200px;
+// * breakpoints
+$grid-xs: 0px;
+$grid-sm: 576px;
+$grid-md: 768px;
+$grid-lg: 992px;
+$grid-xl: 1200px;
+$grid-2xl: 1400px;
 
-// * breakpoint labels used with the media-query mixin
-$small: 'small';
-$small-up: 'small-up';
-$medium: 'medium';
-$medium-down: 'medium-down';
-$large: 'large';
-$large-down: 'large-down';
-$x-large: 'x-large';
-
-// * breakpoints map
-$breakpoints: (
-	$small '(max-width: #{$grid-small})',
-	$small-up '(min-width: #{$grid-small + 1})',
-	$medium-down '(max-width: #{$grid-medium - 1})',
-	$medium '(min-width: #{$grid-medium})',
-	$large-down '(max-width: #{$grid-widescreen - 1})',
-	$large '(min-width: #{$grid-large})',
-	$x-large '(min-width: #{$grid-widescreen})'
-);
-
-// * Helper to declare media query rules
-// * @param {string} $media-query
-@mixin respond-to($media-query) {
-	$breakpoint-found: false;
-
-	@each $breakpoint in $breakpoints {
-		$name: nth($breakpoint, 1);
-		$declaration: nth($breakpoint, 2);
-
-		@if $media-query==$name and $declaration {
-			$breakpoint-found: true;
-
-			@media only screen and #{$declaration} {
-				@content;
-			}
-		}
-	}
-}
 
 // * basic transition rule
 @mixin transition-basic() {
-	transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+	transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 // * form placeholder color
