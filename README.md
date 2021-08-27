@@ -1,5 +1,5 @@
-# WordPress Template
-A modular wordpress template for building custom themes.
+# WordPress Starter Theme
+A modular wordpress theme for building custom templates.
 
 ## Instructions
 1. Prerequisites:
@@ -7,9 +7,9 @@ A modular wordpress template for building custom themes.
 	- [git](http://git-scm.com/)
 	- [gulp](http://gulpjs.com/)
 2. Clone this repository into your local machine using the terminal (mac) or Gitbash (PC):  
-	`git clone https://github.com/RPeraltaJr/wordpress-template`
+	`git clone https://github.com/RPeraltaJr/wp-starter-theme`
 3. Change directory to project folder:  
-	`cd wordpress-template`
+	`cd wp-starter-theme`
 4. Install all dependencies:  
 	`npm install`     
 	`composer install`
