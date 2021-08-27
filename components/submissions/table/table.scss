@@ -1,0 +1,50 @@
+// * override dataTables styles
+table.dataTable tbody th, 
+table.dataTable tbody td {
+    padding: 15px 10px;
+}
+
+table.dataTable tbody th:not(:first-child), 
+table.dataTable tbody td:not(:first-child) {
+    min-width: 120px;
+}
+table.dataTable tbody th:last-child, 
+table.dataTable tbody td:last-child {
+    min-width: 240px;
+}
+
+.dataTables_wrapper::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 1px;
+}
+
+.dataTables_wrapper::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .3);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.dataTables_wrapper {
+    overflow-x: scroll;
+    
+}
+.dataTables_paginate {
+    margin-bottom: 3rem;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+select {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    min-height: 32px;
+}
+
+.dataTables_wrapper .dataTables_length,
+div.dt-buttons,
+table.dataTable.no-footer {
+    margin-bottom: 1rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current { 
+    background: none;
+}
