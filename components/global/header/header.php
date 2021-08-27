@@ -13,9 +13,13 @@
     
     <meta property="og:type" content="website"/> 
     <meta property="og:title" content="<?php if(isset($page_setting->meta) && !empty($page_setting->meta->title)): echo $page_setting->meta->title; else: echo ""; endif; ?>"/>
+    <meta property="og:url" content="<?php if($page_setting->name != 'index'): echo basename($_SERVER['REQUEST_URI']); endif; ?>" />
+    <meta property="og:image" content="<?php echo $img_path; ?>/og_img.jpg" /> 
+    <meta property="og:description" content="<?php if(isset($page_setting->meta) && !empty($page_setting->meta->desc)): echo $page_setting->meta->desc; else: echo ""; endif; ?>" />
+    <meta property="og:site_name" content="<?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?>" />
 
     <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
-    <!-- <link rel="shortcut icon" href="assets/build/img/favicon.ico" type="image/x-icon"> -->
+    <!-- <link rel="shortcut icon" href="<?php echo $img_path; ?>/favicon.ico" type="image/x-icon"> -->
     
     <?php wp_head(); ?>
     
