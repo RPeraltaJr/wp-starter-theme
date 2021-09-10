@@ -2,8 +2,19 @@
 
 global $wpdb;
 
-// * Required (for sending confirmation email)
-$company_name = ""; 
+function remove_http($url) {
+	$disallowed = array('http://', 'https://');
+	foreach($disallowed as $d) {
+		if(strpos($url, $d) === 0) {
+			return str_replace($d, '', $url);
+		}
+	}
+	return $url;
+}
+
+// * Variables
+$domain_name = remove_http(home_url());
+$company_name = ""; // * Required (for sending confirmation email)
 
 /* 
 * ----------------------------------------------
