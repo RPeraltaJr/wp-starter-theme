@@ -13,3 +13,7 @@ include 'functions/send-report.php';
 function get_img_path() {
     return get_template_directory_uri() . "/assets/img";
 }
+
+// * enable widgets
+if ( function_exists('register_sidebar') )
+register_sidebar();
