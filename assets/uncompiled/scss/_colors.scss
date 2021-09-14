@@ -10,19 +10,11 @@ $color-map: (
     green: $color-green,
 );
 
-$primary-color: $color-green;
-$secondary-color: $color-yellow;
-
-.text {
-    &-grey { color: $color-grey; }
-    &-grey-light { color: $color-grey-light; }
-    &-yellow { color: $color-yellow; }
-    &-green { color: $color-green; }
-}
-
-.bg {
-    &-grey { background-color: $color-grey; }
-    &-grey-light { background-color: $color-grey-light; }
-    &-yellow { background-color: $color-yellow; }
-    &-green { background-color: $color-green; }
+@each $name, $color in $color-map {
+    .text-#{$color} {
+        color: $color;
+    }
+    .bg-#{$color} {
+        background-color: $color;
+    }
 }
