@@ -18,20 +18,6 @@ $company_name = ""; // * Required (for sending confirmation email)
 
 /* 
 * ----------------------------------------------
-* HTMLPurifier Plugin
-* @source: http://htmlpurifier.org/demo.php
-* HTML Purifier will not only remove all malicious code (better known as XSS) with a thoroughly audited, secure yet permissive whitelist, it will also make sure your documents are standards compliant, something only achievable with a comprehensive knowledge of W3C's specifications.
-* ----------------------------------------------
-*/
-
-require __DIR__ . '/../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
-$config = HTMLPurifier_Config::createDefault();
-$purifier = new HTMLPurifier($config);
-// $clean_html = $purifier->purify($dirty_html);
-
-
-/* 
-* ----------------------------------------------
 * Error Handling
 * ----------------------------------------------
 */
@@ -141,7 +127,7 @@ if( isset($_POST['submit']) ):
 	foreach ($post_fields_array as $post_field => $required) {
         if ( (empty($_POST[$post_field]) || strlen($_POST[$post_field]) < 1) && $required == true ) {
             $response->error = true;
-            $response->messages[$post_field] = "<strong>{$post_field}</strong> is required.";
+            $response->messages[] = "<strong>{$post_field}</strong> is required.";
             
             if (!empty($_GET['testing']) && is_user_logged_in()) {
                 $response->messages[] = "field: $post_field";
@@ -159,7 +145,7 @@ if( isset($_POST['submit']) ):
                 if (!empty($$post_field)) {
                     if (!filter_var($$post_field, FILTER_VALIDATE_EMAIL)) {
                         $response->error = true;
-                        $response->messages["email"] = "Enter a valid email address.";
+                        $response->messages[] = "Enter a valid email address.";
                     }
                 }
                 $table_data[$post_field] = $$post_field;
@@ -174,7 +160,7 @@ if( isset($_POST['submit']) ):
     foreach ($custom_questions_fields as $post_field => $label) {
         if (empty($_POST[$post_field]) || strlen($_POST[$post_field]) < 1) {
             $response->error = true;
-            $response->messages[$label] = "<strong>$label</strong> is required.";
+            $response->messages[] = "<strong>$label</strong> is required.";
             
             if (!empty($_GET['testing']) && is_user_logged_in()) {
                 $response->messages[] = "field: $post_field";
@@ -227,30 +213,71 @@ if( isset($_POST['submit']) ):
 		$success = $wpdb->insert($table_name, $table_data);
 
 		if ($success) {
+            /**
+			 * -----------------------------------------
+			 * Send to Applicant
+			 * -----------------------------------------
+			 */
             $subject = "Thank you so much for your interest in $company_name";
             $mail_applicant =
                 "
 				Hello $first_name,<br><br>
-				Thank you so much for your interest in $company_name!<br><br>
-				If you would like to speak to a recruiter now, please call $phone_number.<br><br>
-				If you are ready to go through our full application process, <a href='$ats_link'>click here</a>.<br><br>
+				Thank You for your interest in a career at $company_name.<br>
+				We look forward to connecting with you.<br><br>
+				If you meet our qualifications, one of our recruiters will reach out to you!<br><br>
 				Thank you,<br>
 				$company_name
 			";
-            $to = $first_name . "<" . $email . ">";
+            $to = "{$first_name} {$last_name} <" . $email . ">";
             // message
             $message = "<html><head></head><body>$mail_applicant</body></html>";
             $headers = array(
                 "Content-Type: text/html; charset=UTF-8",
-                "From: $company_name <no-reply@" . home_url() . ">",
+                "From: $company_name <no-reply@{$domain_name}>",
             );
-
             wp_mail($to, $subject, $message, $headers);
+
+			/**
+			 * -----------------------------------------
+			 * Send to Recruiter
+			 * -----------------------------------------
+			 */
+			$subject = "$domain_name - New Applicant";
+			$mail_applicant = "
+				First Name: $first_name<br>
+				Last Name: $last_name<br>
+				Email: $email<br>
+				Phone: $phone<br>
+				Zip Code, City, or State: $location<br>
+				Nursing Area of Interest: $area<br>
+				Shift Preference: $shift<br>
+			";
+			if($last_name == 'Testerson'): 
+				// echo '<pre>' . var_export($mail_applicant, true) . '</pre>'; exit;
+				$to = [
+					"dev@mail.com"
+				];
+			else: 
+				$to = [
+					"client@mail.com"
+				];
+			endif;
+
+			// message
+            $message = "<html><head></head><body>$mail_applicant</body></html>";
+            $headers = array(
+                "Content-Type: text/html; charset=UTF-8",
+                "From: $company_name <no-reply@{$domain_name}>",
+            );
+            wp_mail($to, $subject, $message, $headers);
+			if(empty($thankyou_page)): 
+				$thankyou_page = home_url() . "/thank-you";
+			endif;
             wp_redirect($thankyou_page);
             exit();
         } else {
             $response->error = true;
-            $response->messages["form"] = "There was an error. Please try again.";
+            $response->messages[] = "There was an error. Please try again.";
 		}
 	endif;
 
