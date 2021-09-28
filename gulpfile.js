@@ -30,6 +30,7 @@ const paths = {
   scripts: {
     inputs: [
       './assets/uncompiled/js/page-home.js',
+      './assets/uncompiled/js/page-submissions.js',
     ],
     modules: 'assets/uncompiled/js/modules/*.js',
     dest: 'assets/build/js/',
