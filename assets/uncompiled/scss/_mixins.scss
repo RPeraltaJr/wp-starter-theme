@@ -29,6 +29,20 @@ $grid-2xl: 1400px;
 	}
 }
 
+// * Helper for button hovers
+// * @param {string} $bg
+// * @param {string} $color
+@mixin btnHover($bg: "black", $color: "white") {
+	&:hover,
+	&:focus,
+	&:target,
+	&:active {
+		background: $bg;
+		color: $color;
+		border-color: $bg;
+	}
+}
+
 // * Helper for cover background-image
 // * @param {string} $url Relative path from img folder
 // * @param {int} $opacity Optional. Specify amount from 0 to 1 for black overlay.
