@@ -1,14 +1,37 @@
 <?php 
+
+    /**
+     * *************************************
+     * * Get table columns
+     * *************************************
+     */
+    $query = "DESCRIBE `submissions` ";
+    $stmt = $wpdb->prepare($query);
+    $columns = $wpdb->get_results($stmt);
+    $columns_array = array();
+
+    foreach($columns as $column): 
+        $columns_array[] = $column->Field;
+    endforeach;
+    // var_dump($columns_array);
+
+    /**
+     * *************************************
+     * * Get submissions data
+     * *************************************
+     */
     $query = "SELECT * FROM `submissions` ";
     $stmt = $wpdb->prepare($query);
     $results = $wpdb->get_results($stmt);
 ?>
 
-<div class="container my-5">
+<div class="container-fluid px-5 my-5">
     <div class="row">
         <div class="col col-12">
 
-            <?php if( !empty($results) ): ?>
+            <?php if( !empty($columns_array) && !empty($results) ): ?>
+
+                <!-- Filters -->
                 <table class="mb-3" border="0" cellspacing="5" cellpadding="5">
                     <tbody>
                         <tr>
@@ -21,44 +44,36 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <!-- Results -->
                 <table id="submissions_table" class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Timestamp</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Form ID</th>
-                            <th scope="col">URL</th>
+                            <?php foreach($columns_array as $column): ?>
+                                <th scope="col">
+                                    <?php 
+                                        $column_name = ucwords(str_replace("_"," ", $column));
+                                        echo $column_name; 
+                                    ?>
+                                </th>
+                            <?php endforeach; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                            $x = 1; 
-                            foreach($results as $res): 
-                                $res = (object) $res;
-                        ?>
-                        <tr> 
-                            <th scope="row"><?php echo $res->id; ?></th>
-                            <td>
-                                <?php 
-                                    $date = $res->timestamp;
-                                    $newDate = date("m/d/Y", strtotime($date));
-                                    echo $newDate;
-                                ?>
-                            </td>
-                            <td><?php echo $res->full_name; ?></td>
-                            <td><?php echo $res->phone; ?></td>
-                            <td><?php echo $res->email; ?></td>
-                            <td><?php echo $res->form_id; ?></td>
-                            <td><?php echo $res->form_url; ?></td>
-                        </tr>
-                        <?php $x++; endforeach; ?>
+                        <?php foreach($results as $res): $res = (object) $res; ?>
+                            <tr> 
+                                <?php foreach($columns_array as $column): ?>
+                                    <td><?php echo $res->$column; ?></td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
+
             <?php else: ?>
+
                 <p>No results found.</p>
+
             <?php endif; ?>
 
         </div>
