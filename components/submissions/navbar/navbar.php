@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+  <div class="container-fluid px-5">
     <h1 class="navbar-brand mb-0">
       <a href="<?php echo home_url(); ?>/wp-admin" class="text-white">Submissions</a>
     </h1>
