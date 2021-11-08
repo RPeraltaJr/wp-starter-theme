@@ -31,16 +31,3 @@ function create_custom_table()
 if (!empty($_GET['create-custom-table']) && is_user_logged_in()) {
     add_action('init', 'create_custom_table');
 }
-
-
-function drop_custom_table()
-{
-    global $wpdb;
-    $table_name = "submissions";
-
-    $wpdb->query("DROP TABLE $table_name");
-    exit("table dropped");
-}
-if (!empty($_GET['drop-custom-table']) && is_user_logged_in()) {
-    add_action('init', 'drop_custom_table');
-}
