@@ -198,13 +198,23 @@ if( isset($_POST['submit']) ):
     endif;
 
     	// * Validations
-    	// * check for duplicate submissions
-    $stmt = $wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE first_name = %s AND last_name = %s AND email = %s", $first_name, $last_name, $email);
-    $row_count = $wpdb->get_var($stmt);
-    if($row_count > 0): 
-        $response->error = true;
-        $response->messages[] = "We have received your application and you will hear from our recruiters soon!";
-    endif;
+	// * prevent multiple submissions on the same day
+	if (!is_user_logged_in()):
+		$count = $wpdb->get_var(
+		    $wpdb->prepare(
+			"SELECT COUNT(*)
+			FROM $table_name
+			WHERE (`timestamp` LIKE %s) AND `email` = %s", [
+			    "%%" . date("Y-m-d") . "%%",
+			    $email,
+			]
+		    )
+		);
+		if($row_count > 0): 
+			$response->error = true;
+			$response->messages[] = "We have received your application and you will hear from our recruiters soon!";
+		endif;
+	endif;
 	
 	// send mail if successful
 	if ($response->error === false):
