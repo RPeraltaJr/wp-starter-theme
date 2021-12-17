@@ -3,7 +3,7 @@
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=1, initial-scale=1.0, maximum-scale=2, minimum-scale=1.0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta http-equiv="Cache-control" content="public">
     <meta name="description" content="<?php if(isset($page_setting->meta) && !empty($page_setting->meta->desc)): echo $page_setting->meta->desc; else: echo ""; endif; ?>">
