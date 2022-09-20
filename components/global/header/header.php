@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-control" content="public">
 
     <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
-    <link rel="shortcut icon" href="<?php echo $img_path; ?>/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="<?php echo $img_path; ?>/favicon.ico" type="image/x-icon">
     
     <?php wp_head(); ?>
     
