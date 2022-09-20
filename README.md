@@ -17,9 +17,15 @@ A modular wordpress theme for building custom templates.
 	`gulp`
 
 ## Features
-1. Compiles SCSS into CSS
+1. SCSS compiler
 2. CSS and JS minifier
 3. Autoprefixer
 4. HTMLPurifier [http://htmlpurifier.org/]
 5. PHP Environment variables [https://github.com/vlucas/phpdotenv]
-6. Page specific settings for better page load and SEO
+
+## Plugins
+* **Advanced Cron Manager** by BracketSpace https://wordpress.org/plugins/advanced-cron-manager/
+* **Advanced Custom Fields PRO** by Elliot Condon https://www.advancedcustomfields.com
+* **Post Duplicator** by Metaphor Creations https://wordpress.org/plugins/post-duplicator
+* **Safe SVG** by Daryll Doyle https://wordpress.org/plugins/safe-svg/
+* **Yoast SEO** by Team Yoast https://wordpress.org/plugins/wordpress-seo/
