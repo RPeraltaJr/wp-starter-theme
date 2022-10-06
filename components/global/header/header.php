@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
   <head>
+
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-control" content="public">
 
     <title><?php echo get_bloginfo( 'name' ) . " - " ?? ''; ?><?php the_title(); ?></title>
-    <link rel="shortcut icon" href="<?php echo $img_path; ?>/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo $img_path; ?>/tb_favicon.png" type="image/png">
     
     <?php wp_head(); ?>
     
@@ -17,4 +18,4 @@
   </head>
   <body <?php body_class(); ?>>
 
-    <a href='#hero' class='sr-only'>Skip to main content</a>
+    <a href='<?php if(!empty($page_setting->main)): echo $page_setting->main; endif; ?>' class='sr-only'>Skip to main content</a>
