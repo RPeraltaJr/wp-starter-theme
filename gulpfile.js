@@ -10,7 +10,7 @@ const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-const sass = require('gulp-sass');
+const sass = require('gulp-dart-sass');
 const rename = require('gulp-rename');
 const sassGlob = require('gulp-sass-glob');
 const browserify = require('browserify');
@@ -38,7 +38,6 @@ const paths = {
 };
 
 const sassOptions = {
-  errLogToConsole: true,
   outputStyle: 'expanded',
 };
 
@@ -107,5 +106,4 @@ function watch() {
 exports.watch = watch;
 
 const build = gulp.parallel(styles, scripts, watch);
-
 gulp.task('default', build);
