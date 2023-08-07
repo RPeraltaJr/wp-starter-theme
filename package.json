@@ -8,16 +8,15 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-clean-css": "^4.2.0",
+    "gulp-cli": "^2.2.0",
     "gulp-concat": "^2.6.1",
+    "gulp-dart-sass": "^1.1.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.0.9",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "sass": "^1.64.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "dependencies": {
-    "gulp-cli": "^2.2.0"
   }
 }
