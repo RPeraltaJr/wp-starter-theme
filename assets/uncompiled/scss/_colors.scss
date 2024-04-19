@@ -11,10 +11,10 @@ $color-map: (
 );
 
 @each $name, $color in $color-map {
-    .text-#{$name} {
+    .text-#{"" + $name} {
         color: $color;
     }
-    .bg-#{$name} {
+    .bg-#{"" + $name} {
         background-color: $color;
     }
 }
